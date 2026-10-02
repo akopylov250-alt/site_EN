@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DK — Interior Design | Antique Aesthetics</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c9a24b;
+    --gold-light: #e8c979;
+    --gold-dark: #8a6d2f;
+    --dark: #0a0908;
+    --dark-2: #100e0c;
+    --dark-3: #17140f;
+    --dark-4: #1f1a13;
+    --text: #e2dccf;
+    --text-dim: #b8b0a0;
+    --text-mute: #847c6d;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    line-height: 1.8;
+    font-size: 18px;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+  }
+
+  /* ============================================
+     BACKGROUND — ANTIQUE SCULPTURES
+     ============================================ */
+  .site-background {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    overflow: hidden;
+    background: #0a0908;
+  }
+  .site-background .st-1 {
+    position: absolute;
+    top: 0; left: -5%;
+    width: 55%; height: 100%;
+    object-fit: cover;
+    filter: none;
+    opacity: .85;
+  }
+  .site-background .st-2 {
+    position: absolute;
+    top: 50%; right: 3%;
+    width: auto;
+    height: 55%;
+    max-width: 30%;
+    transform: translateY(-50%);
+    opacity: .55;
+    filter: sepia(.4) brightness(.75) contrast(1.15) saturate(.55);
+    object-fit: contain;
+  }
+
+  .site-background::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 25% 30%, rgba(201,162,75,.10), transparent 50%),
+      linear-gradient(to bottom, rgba(10,9,8,.55) 0%, rgba(10,9,8,.45) 50%, rgba(10,9,8,.65) 100%);
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: .05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  ::selection { background: var(--gold); color: var(--dark); }
+
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: var(--dark-2); }
+  ::-webkit-scrollbar-thumb { background: var(--gold-dark); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+  .roman-bg {
+    position: absolute;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    color: rgba(201,162,75,.08);
+    pointer-events: none;
+    user-select: none;
+    line-height: .8;
+    z-index: 0;
+  }
+
+  /* ---------- HEADER ---------- */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 5vw;
+    transition: .5s cubic-bezier(.4,0,.2,1);
+  }
+  header.scrolled {
+    background: rgba(10,9,8,.8);
+    padding: 16px 5vw;
+    border-bottom: 1px solid rgba(201,162,75,.2);
+    backdrop-filter: blur(14px);
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.9rem;
+    letter-spacing: .38em;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    text-shadow: 0 2px 20px rgba(0,0,0,.9);
+  }
+  .logo small {
+    font-family: 'Jost', sans-serif;
+    font-size: .62rem;
+    letter-spacing: .5em;
+    color: var(--text-dim);
+    margin-top: 9px;
+    font-weight: 300;
+  }
+
+  nav ul { display: flex; gap: 42px; list-style: none; }
+  nav a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: .88rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    transition: .35s;
+    position: relative;
+    font-weight: 400;
+    text-shadow: 0 2px 12px rgba(0,0,0,.9);
+  }
+  nav a::after {
+    content: "";
+    position: absolute;
+    bottom: -7px; left: 50%;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: .4s;
+    transform: translateX(-50%);
+  }
+  nav a:hover { color: var(--gold-light); }
+  nav a:hover::after { width: 100%; }
+
+  .burger { display: none; flex-direction: column; gap: 6px; cursor: pointer; padding: 6px; }
+  .burger span { width: 28px; height: 1px; background: var(--gold); transition: .35s; }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 140px 5vw 90px;
+    overflow: hidden;
+  }
+
+  .hero-columns {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    display: flex;
+    justify-content: space-around;
+    opacity: .18;
+  }
+  .hero-columns span {
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 3;
+    max-width: 780px;
+  }
+  .hero-label {
+    font-size: .82rem;
+    letter-spacing: .5em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    display: flex; align-items: center; gap: 18px;
+    font-weight: 400;
+    text-shadow: 0 2px 12px rgba(0,0,0,.9);
+  }
+  .hero-label::before { content: ""; width: 60px; height: 1px; background: var(--gold); }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6.8vw, 6rem);
+    font-weight: 300;
+    line-height: 1.02;
+    color: #fdf9f0;
+    margin-bottom: 50px;
+    letter-spacing: .005em;
+    text-shadow: 0 4px 40px rgba(0,0,0,.95), 0 2px 10px rgba(0,0,0,.8);
+  }
+  .hero h1 em { font-style: italic; color: var(--gold-light); }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 50px;
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    text-decoration: none;
+    font-family: 'Jost', sans-serif;
+    font-size: .82rem;
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    background: rgba(10,9,8,.55);
+    backdrop-filter: blur(6px);
+    cursor: pointer;
+    transition: .5s cubic-bezier(.4,0,.2,1);
+    position: relative;
+    overflow: hidden;
+    font-weight: 400;
+  }
+  .btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--gold);
+    transform: translateY(101%);
+    transition: .5s cubic-bezier(.4,0,.2,1);
+    z-index: -1;
+  }
+  .btn:hover { color: var(--dark); border-color: var(--gold-light); }
+  .btn:hover::before { transform: translateY(0); }
+
+  .hero-meta {
+    position: absolute;
+    bottom: 48px;
+    right: 5vw;
+    z-index: 3;
+    text-align: right;
+    font-size: .78rem;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    text-shadow: 0 2px 12px rgba(0,0,0,.9);
+  }
+  .hero-meta b { color: var(--gold); font-weight: 400; display: block; margin-top: 6px; }
+
+  /* ---------- MARQUEE ---------- */
+  .marquee {
+    border-top: 1px solid rgba(201,162,75,.22);
+    border-bottom: 1px solid rgba(201,162,75,.22);
+    overflow: hidden;
+    padding: 26px 0;
+    background: rgba(10,9,8,.55);
+    backdrop-filter: blur(8px);
+    position: relative;
+    z-index: 2;
+  }
+  .marquee-track {
+    display: flex;
+    gap: 60px;
+    white-space: nowrap;
+    animation: scroll 40s linear infinite;
+    width: max-content;
+  }
+  .marquee-track span {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    color: var(--gold-light);
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    font-style: italic;
+    display: flex; align-items: center; gap: 60px;
+  }
+  .marquee-track span::after {
+    content: "◆";
+    color: var(--gold);
+    font-style: normal;
+    font-size: .8rem;
+  }
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ---------- SECTION ---------- */
+  section { padding: 140px 5vw; position: relative; overflow: hidden; }
+
+  .section-head { margin-bottom: 80px; max-width: 720px; position: relative; z-index: 2; }
+  .section-num {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--gold);
+    font-size: 1rem;
+    letter-spacing: .4em;
+    margin-bottom: 24px;
+    display: block;
+    font-weight: 400;
+    text-shadow: 0 2px 12px rgba(0,0,0,.9);
+  }
+  .section-head h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.4rem, 4.6vw, 3.8rem);
+    font-weight: 300;
+    color: #fdf9f0;
+    line-height: 1.12;
+    text-shadow: 0 4px 30px rgba(0,0,0,.95), 0 2px 8px rgba(0,0,0,.8);
+  }
+  .section-head h2 em { color: var(--gold-light); font-style: italic; }
+  .section-head p {
+    margin-top: 28px;
+    color: #d8d1c2;
+    font-size: 1.1rem;
+    max-width: 580px;
+    line-height: 1.8;
+    text-shadow: 0 2px 14px rgba(0,0,0,.95);
+  }
+
+  /* ---------- PHILOSOPHY ---------- */
+  .philosophy {
+    background: rgba(10,9,8,.4);
+    backdrop-filter: blur(4px);
+    border-top: 1px solid rgba(201,162,75,.14);
+    border-bottom: 1px solid rgba(201,162,75,.14);
+  }
+  .philosophy .roman-bg { top: -30px; right: 3vw; font-size: 22rem; }
+
+  .phil-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 1px solid rgba(201,162,75,.25);
+    position: relative;
+    z-index: 2;
+    background: rgba(10,9,8,.55);
+    backdrop-filter: blur(8px);
+  }
+  .phil-card {
+    padding: 56px 36px;
+    border-right: 1px solid rgba(201,162,75,.25);
+    transition: .55s;
+    position: relative;
+  }
+  .phil-card:last-child { border-right: none; }
+  .phil-card:hover { background: rgba(31,26,19,.75); }
+  .phil-card:hover .icon { color: var(--gold-light); transform: translateY(-4px); }
+  .phil-card .icon {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.2rem;
+    color: var(--gold);
+    margin-bottom: 26px;
+    line-height: 1;
+    transition: .5s;
+    font-style: italic;
+  }
+  .phil-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #f7f1e6;
+    margin-bottom: 16px;
+    letter-spacing: .02em;
+  }
+  .phil-card p { font-size: 1rem; color: var(--text-dim); line-height: 1.7; }
+
+  /* ---------- SHOWCASE ---------- */
+  .showcase {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 0;
+    padding: 0;
+    border-top: 1px solid rgba(201,162,75,.14);
+    border-bottom: 1px solid rgba(201,162,75,.14);
+  }
+  .showcase-visual {
+    position: relative;
+    min-height: 640px;
+    overflow: hidden;
+  }
+  .showcase-visual img {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: sepia(.3) brightness(.85) contrast(1.1) saturate(.65);
+    transition: 1.2s cubic-bezier(.2,0,.2,1);
+  }
+  .showcase-visual:hover img { transform: scale(1.05); filter: sepia(.2) brightness(1) contrast(1.1) saturate(.8); }
+  .showcase-visual::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, transparent 55%, rgba(10,9,8,.85) 100%),
+                linear-gradient(to top, rgba(10,9,8,.4), transparent 40%);
+  }
+  .showcase-caption {
+    position: absolute;
+    bottom: 40px; left: 40px;
+    z-index: 3;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.35rem;
+    color: var(--gold-light);
+    text-shadow: 0 2px 16px rgba(0,0,0,.95);
+  }
+  .showcase-text {
+    background: rgba(10,9,8,.6);
+    backdrop-filter: blur(8px);
+    padding: 100px 7vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+  }
+  .showcase-text .roman-bg { bottom: -40px; right: 20px; font-size: 16rem; }
+  .showcase-text blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.7rem, 2.9vw, 2.5rem);
+    font-weight: 300;
+    font-style: italic;
+    color: #fdf9f0;
+    line-height: 1.4;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 2px 24px rgba(0,0,0,.9);
+  }
+  .showcase-text blockquote em { color: var(--gold-light); }
+
+  /* ---------- PORTFOLIO ---------- */
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 22px;
+    position: relative;
+    z-index: 2;
+  }
+  .work {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(201,162,75,.25);
+    cursor: pointer;
+    box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    background: rgba(10,9,8,.4);
+  }
+  .work img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: none;
+    transition: 1.1s cubic-bezier(.2,0,.2,1);
+    display: block;
+  }
+  .work:hover img {
+    transform: scale(1.04);
+    filter: brightness(1.05) contrast(1.02);
+  }
+  .work .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,9,8,.95) 0%, rgba(10,9,8,.15) 55%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 38px;
+    transition: .5s;
+    pointer-events: none;
+  }
+  .work .overlay .tag {
+    font-size: .8rem;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+  .work .overlay h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.95rem;
+    font-weight: 400;
+    color: #fdf9f0;
+    transform: translateY(8px);
+    transition: .55s;
+  }
+  .work .overlay .area {
+    font-size: .92rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: #d8d1c2;
+    margin-top: 8px;
+    transition: .5s;
+  }
+  .work .overlay .desc {
+    font-size: .92rem;
+    color: #b8b0a0;
+    margin-top: 10px;
+    line-height: 1.6;
+    letter-spacing: .04em;
+    max-width: 90%;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: .6s;
+  }
+  .work .overlay .line {
+    width: 0; height: 1px;
+    background: var(--gold);
+    margin-top: 16px;
+    transition: .6s;
+  }
+  .work:hover .overlay h3 { transform: translateY(0); }
+  .work:hover .overlay .desc { opacity: 1; transform: translateY(0); }
+  .work:hover .overlay .line { width: 60px; }
+
+  /* === Layout: 1 large + 4 half-width (desktop) === */
+  .work:nth-child(1) { grid-column: span 12; min-height: 620px; }
+  .work:nth-child(2) { grid-column: span 6; min-height: 420px; }
+  .work:nth-child(3) { grid-column: span 6; min-height: 420px; }
+  .work:nth-child(4) { grid-column: span 6; min-height: 420px; }
+  .work:nth-child(5) { grid-column: span 6; min-height: 420px; }
+
+  /* ---------- ABOUT AUTHOR ---------- */
+  .about {
+    background: rgba(10,9,8,.45);
+    backdrop-filter: blur(4px);
+    border-top: 1px solid rgba(201,162,75,.14);
+    border-bottom: 1px solid rgba(201,162,75,.14);
+  }
+  .about .roman-bg { top: 6%; left: -20px; font-size: 15rem; }
+
+  .about-wrap {
+    display: grid;
+    grid-template-columns: .85fr 1.15fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  .about-photo {
+    position: relative;
+    aspect-ratio: 4/5;
+    padding: 18px;
+    border: 1px solid rgba(201,162,75,.4);
+    background: rgba(10,9,8,.4);
+    backdrop-filter: blur(4px);
+  }
+  .about-photo::before, .about-photo::after {
+    content: "";
+    position: absolute;
+    width: 44px; height: 44px;
+    border: 1px solid var(--gold);
+  }
+  .about-photo::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+  .about-photo::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+  .about-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: sepia(.35) brightness(.9) contrast(1.1) saturate(.6);
+    transition: 1s;
+  }
+  .about-photo:hover img { filter: sepia(.25) brightness(1) contrast(1.12) saturate(.75); }
+
+  .about-text .role {
+    color: var(--gold);
+    font-size: .82rem;
+    letter-spacing: .4em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: block;
+    font-weight: 400;
+    text-shadow: 0 2px 12px rgba(0,0,0,.9);
+  }
+  .about-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.3rem, 4vw, 3.4rem);
+    font-weight: 300;
+    color: #fdf9f0;
+    margin-bottom: 30px;
+    line-height: 1.15;
+    text-shadow: 0 4px 30px rgba(0,0,0,.95);
+  }
+  .about-text h2 em { color: var(--gold-light); font-style: italic; }
+  .about-text p { color: #d8d1c2; font-size: 1.08rem; margin-bottom: 20px; line-height: 1.8; text-shadow: 0 2px 14px rgba(0,0,0,.95); }
+
+  .about-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.55rem;
+    color: var(--gold-light);
+    border-left: 1px solid var(--gold);
+    padding: 6px 0 6px 28px;
+    margin: 38px 0;
+    line-height: 1.55;
+    text-shadow: 0 2px 20px rgba(0,0,0,.95);
+  }
+
+  .about-stats {
+    display: flex;
+    gap: 55px;
+    margin-top: 46px;
+    padding-top: 38px;
+    border-top: 1px solid rgba(201,162,75,.25);
+  }
+  .stat .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.2rem;
+    color: var(--gold-light);
+    line-height: 1;
+    font-weight: 400;
+    text-shadow: 0 2px 20px rgba(0,0,0,.9);
+  }
+  .stat .lbl {
+    font-size: .8rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-top: 12px;
+  }
+
+  /* ============================================
+     RESUME / EXPERIENCE / EDUCATION
+     ============================================ */
+  .resume-section {
+    margin-top: 80px;
+    padding-top: 60px;
+    border-top: 1px solid rgba(201,162,75,.25);
+    position: relative;
+    z-index: 2;
+  }
+  .resume-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+  .resume-col h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--gold-light);
+    margin-bottom: 36px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(201,162,75,.25);
+    padding-bottom: 16px;
+  }
+  .resume-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 20px;
+    margin-bottom: 28px;
+    align-items: start;
+  }
+  .resume-item .year {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    color: var(--gold);
+    font-weight: 500;
+    letter-spacing: .05em;
+    padding-top: 2px;
+  }
+  .resume-item .desc {
+    color: #d8d1c2;
+    font-size: 1rem;
+    line-height: 1.7;
+    text-shadow: 0 2px 10px rgba(0,0,0,.8);
+  }
+  .resume-item .desc strong {
+    color: #fdf9f0;
+    font-weight: 400;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* Programs */
+  .programs-list {
+    margin-top: 10px;
+  }
+  .program-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(201,162,75,.12);
+  }
+  .program-item:last-child { border-bottom: none; }
+  .program-item .p-name {
+    font-size: 1.05rem;
+    color: #d8d1c2;
+    letter-spacing: .05em;
+  }
+  .program-item .p-dots {
+    display: flex;
+    gap: 8px;
+  }
+  .program-item .p-dots span {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: rgba(201,162,75,.2);
+    display: inline-block;
+    transition: .4s;
+  }
+  .program-item .p-dots span.filled {
+    background: var(--gold);
+    box-shadow: 0 0 12px rgba(201,162,75,.4);
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact { text-align: center; }
+  .contact .section-head { margin: 0 auto 70px; text-align: center; }
+  .contact .section-head p { margin-left: auto; margin-right: auto; }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  .contact-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 18px;
+    padding: 50px 26px;
+    border: 1px solid rgba(201,162,75,.25);
+    background: rgba(10,9,8,.55);
+    backdrop-filter: blur(8px);
+    text-decoration: none;
+    transition: .5s cubic-bezier(.4,0,.2,1);
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(201,162,75,.12), transparent);
+    opacity: 0;
+    transition: .5s;
+  }
+  .contact-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-6px);
+    box-shadow: 0 24px 50px rgba(0,0,0,.55);
+  }
+  .contact-card:hover::before { opacity: 1; }
+
+  .contact-card .ic {
+    position: relative;
+    z-index: 2;
+    width: 52px; height: 52px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold);
+    transition: .5s;
+  }
+  .contact-card:hover .ic { color: var(--gold-light); transform: scale(1.08); }
+  .contact-card .ic svg { width: 34px; height: 34px; }
+
+  .contact-card .cc-label {
+    position: relative;
+    z-index: 2;
+    font-size: .78rem;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 400;
+  }
+  .contact-card .cc-value {
+    position: relative;
+    z-index: 2;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    color: #f7f1e6;
+    line-height: 1.35;
+    word-break: break-word;
+    transition: .4s;
+  }
+  .contact-card:hover .cc-value { color: var(--gold-light); }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    background: rgba(6,5,4,.8);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(201,162,75,.22);
+    padding: 80px 5vw 42px;
+    position: relative;
+    overflow: hidden;
+  }
+  footer .roman-bg { bottom: -60px; right: 4vw; font-size: 20rem; }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 56px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid rgba(201,162,75,.18);
+    position: relative;
+    z-index: 2;
+  }
+  .footer-col h4 {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--gold-light);
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: .14em;
+    margin-bottom: 28px;
+    text-transform: uppercase;
+  }
+  .footer-col p, .footer-col a {
+    color: var(--text-dim);
+    font-size: 1rem;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 15px;
+    transition: .35s;
+    line-height: 1.7;
+  }
+  .footer-col a:hover { color: var(--gold-light); padding-left: 8px; }
+
+  .footer-author {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: #f2ece0;
+    margin-bottom: 10px;
+  }
+  .footer-author span { color: var(--gold); font-style: italic; }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 26px;
+    padding-top: 36px;
+    position: relative;
+    z-index: 2;
+  }
+  .footer-bottom small { color: var(--text-mute); font-size: .88rem; letter-spacing: .05em; }
+
+  .offer-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 36px;
+    border: 1px solid rgba(201,162,75,.6);
+    background: rgba(10,9,8,.4);
+    color: var(--gold-light);
+    font-family: 'Jost', sans-serif;
+    font-size: .8rem;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: .45s;
+    font-weight: 400;
+  }
+  .offer-btn:hover { background: var(--gold); color: var(--dark); border-color: var(--gold); }
+  .offer-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+  /* ---------- MODAL ---------- */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(4,3,2,.92);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    transition: .45s;
+  }
+  .modal-overlay.open { opacity: 1; visibility: visible; }
+
+  .modal {
+    background: var(--dark-2);
+    border: 1px solid rgba(201,162,75,.4);
+    max-width: 820px;
+    width: 100%;
+    max-height: 86vh;
+    overflow-y: auto;
+    padding: 68px 62px;
+    position: relative;
+    transform: translateY(28px);
+    transition: .55s cubic-bezier(.2,0,.2,1);
+  }
+  .modal-overlay.open .modal { transform: translateY(0); }
+  .modal::-webkit-scrollbar { width: 5px; }
+  .modal::-webkit-scrollbar-track { background: var(--dark-3); }
+  .modal::-webkit-scrollbar-thumb { background: var(--gold-dark); }
+
+  .modal-close {
+    position: absolute;
+    top: 26px; right: 30px;
+    background: none;
+    border: none;
+    color: var(--gold);
+    font-size: 2.2rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: .35s;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .modal-close:hover { color: var(--gold-light); transform: rotate(90deg); }
+
+  .modal h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 300;
+    color: #f7f1e6;
+    margin-bottom: 10px;
+  }
+  .modal .modal-sub {
+    color: var(--gold);
+    font-size: .82rem;
+    letter-spacing: .34em;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    display: block;
+  }
+  .modal h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem;
+    color: var(--gold-light);
+    font-weight: 400;
+    margin: 32px 0 16px;
+  }
+  .modal p, .modal li { color: var(--text-dim); font-size: 1.02rem; margin-bottom: 12px; line-height: 1.75; }
+  .modal ul { padding-left: 0; margin-bottom: 14px; list-style: none; }
+  .modal li { position: relative; padding-left: 24px; }
+  .modal li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+  }
+  .modal .requisites {
+    margin-top: 34px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(201,162,75,.2);
+    font-size: .98rem;
+    color: var(--text-mute);
+  }
+  .modal .requisites p { color: var(--text-mute); margin-bottom: 8px; }
+
+  /* ---------- REVEAL ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(45px);
+    transition: 1.1s cubic-bezier(.2,0,.2,1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ============================================================
+     MOBILE ADAPTATION
+     ============================================================ */
+  @media (max-width: 1100px) {
+    .phil-grid { grid-template-columns: repeat(2, 1fr); }
+    .phil-card:nth-child(2) { border-right: none; }
+    .phil-card:nth-child(1), .phil-card:nth-child(2) { border-bottom: 1px solid rgba(201,162,75,.25); }
+    .resume-grid { grid-template-columns: 1fr; gap: 50px; }
+  }
+
+  @media (max-width: 1024px) {
+    .showcase { grid-template-columns: 1fr; }
+    .showcase-visual { min-height: 460px; }
+    .showcase-text { padding: 80px 7vw; }
+    .site-background .st-1 { width: 70%; }
+    .site-background .st-2 { height: 45%; max-width: 36%; opacity: .4; }
+    .contact-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 980px) {
+    body { font-size: 17px; }
+    .hero-inner { max-width: 100%; }
+    .hero h1 { font-size: clamp(2.6rem, 8vw, 4.2rem); }
+    .about-wrap { grid-template-columns: 1fr; gap: 56px; }
+    .about-photo { max-width: 380px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 44px; }
+    .resume-item { grid-template-columns: 100px 1fr; gap: 16px; }
+  }
+
+  /* ---- Portfolio on mobile: all cards horizontal 4:3 ---- */
+  @media (max-width: 760px) {
+    body { font-size: 16px; }
+    nav ul {
+      position: fixed;
+      top: 0; right: 0;
+      height: 100vh;
+      width: 78vw;
+      background: rgba(16,14,12,.97);
+      backdrop-filter: blur(14px);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 46px;
+      transform: translateX(100%);
+      transition: .5s cubic-bezier(.4,0,.2,1);
+      border-left: 1px solid rgba(201,162,75,.25);
+      z-index: 150;
+    }
+    nav ul.open { transform: translateX(0); }
+    nav ul a { font-size: 1rem; }
+    .burger { display: flex; z-index: 200; }
+    .burger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .burger.active span:nth-child(2) { opacity: 0; }
+    .burger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+    section { padding: 96px 6vw; }
+    .hero { padding: 130px 6vw 70px; }
+    .hero-meta { display: none; }
+    .phil-grid { grid-template-columns: 1fr; }
+    .phil-card { border-right: none; border-bottom: 1px solid rgba(201,162,75,.25); }
+    .phil-card:last-child { border-bottom: none; }
+    .modal { padding: 54px 30px; }
+    .about-stats { gap: 34px; flex-wrap: wrap; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .resume-item { grid-template-columns: 1fr; gap: 6px; }
+    .resume-item .year { font-size: 1rem; }
+    .program-item { flex-direction: column; align-items: flex-start; gap: 8px; }
+
+    /* --- All projects: horizontal, full width, no cropping --- */
+    .portfolio-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .work,
+    .work:nth-child(1),
+    .work:nth-child(2),
+    .work:nth-child(3),
+    .work:nth-child(4),
+    .work:nth-child(5) {
+      grid-column: 1 / -1 !important;
+      min-height: 0 !important;
+      height: auto !important;
+      aspect-ratio: 4 / 3;
+      display: block;
+    }
+    .work img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .work .overlay {
+      padding: 22px 18px;
+    }
+    .work .overlay h3 { font-size: 1.35rem; }
+    .work .overlay .area { font-size: .8rem; letter-spacing: .12em; }
+    .work .overlay .tag { font-size: .7rem; letter-spacing: .2em; }
+    .work .overlay .line { margin-top: 10px; }
+    .work:hover .overlay .line { width: 40px; }
+  }
+
+  @media (max-width: 480px) {
+    .work .overlay { padding: 18px 14px; }
+    .work .overlay h3 { font-size: 1.15rem; }
+    .work .overlay .area { font-size: .72rem; }
+    .portfolio-grid { gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================
+     BACKGROUND — ANTIQUE SCULPTURES
+     ============================================ -->
+<div class="site-background">
+  <img class="st-1" src="img/Luxury Custom Greek Mythology Poster - Personalized Astrology Bedroom Wall Art.jpg" alt="">
+</div>
+
+<!-- HEADER -->
+<header id="header">
+  <a href="#" class="logo">DK<small>Interior Design</small></a>
+  <nav>
+    <ul id="menu">
+      <li><a href="#philosophy">Philosophy</a></li>
+      <li><a href="#about">Author</a></li>
+      <li><a href="#portfolio">Projects</a></li>
+      <li><a href="#contact">Contacts</a></li>
+    </ul>
+  </nav>
+  <div class="burger" id="burger"><span></span><span></span><span></span></div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-columns">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="hero-inner">
+    <span class="hero-label">Interior Design · MMXXIV</span>
+    <h1>A space<br>worthy of <em>the gods</em></h1>
+    <a href="#portfolio" class="btn">View Projects</a>
+  </div>
+  <div class="hero-meta">
+    Moscow, Irkutsk
+    <b>Est. 2022</b>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Proportion</span><span>Symmetry</span><span>History</span><span>Light</span><span>Form</span><span>Space</span>
+    <span>Proportion</span><span>Symmetry</span><span>History</span><span>Light</span><span>Form</span><span>Space</span>
+  </div>
+</div>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy" id="philosophy">
+  <span class="roman-bg">III</span>
+  <div class="section-head reveal">
+    <span class="section-num">— I —</span>
+    <h2>Principles of <em>Interior</em></h2>
+    <p>Every project is built on the laws discovered by Vitruvius: durability, utility, and beauty.</p>
+  </div>
+  <div class="phil-grid reveal">
+    <div class="phil-card">
+      <div class="icon">Ⅰ</div>
+      <h3>Proportion</h3>
+      <p>The golden ratio, harmony of volumes and light. No line is accidental — everything is subject to the antique canon.</p>
+    </div>
+    <div class="phil-card">
+      <div class="icon">Ⅱ</div>
+      <h3>Material</h3>
+      <p>Natural textures and honest surfaces that age beautifully and retain their nobility over the years.</p>
+    </div>
+    <div class="phil-card">
+      <div class="icon">Ⅲ</div>
+      <h3>History</h3>
+      <p>Every interior is a dialogue with the past: from Roman mosaics to minimalism refined to its essence.</p>
+    </div>
+    <div class="phil-card">
+      <div class="icon">Ⅳ</div>
+      <h3>Utility</h3>
+      <p>Beauty without convenience is an empty form. Every solution is subject to the logic of life and the owners' scenarios.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT AUTHOR -->
+<section class="about" id="about">
+  <span class="roman-bg">V</span>
+  <div class="about-wrap">
+    <div class="about-photo reveal">
+      <img src="img/IMG_9593.jpg" alt="Danil Kopylov — interior designer">
+    </div>
+    <div class="about-text reveal">
+      <span class="role">Project Author</span>
+      <h2>Danil <em>Kopylov</em></h2>
+      <p>Interior designer. In interior design since 2022. I work at the intersection of antique heritage and modern architecture.</p>
+      <div class="about-quote">"I love antiquity, proportions, logic, and creating interiors with utility, aesthetics, and thoughtfulness."</div>
+      <div class="about-stats">
+        <div class="stat"><div class="num">2022</div><div class="lbl">In interior design since</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       BLOCK: EDUCATION, EXPERIENCE, PROGRAMS
+       ========================================== -->
+  <div class="resume-section reveal">
+    <div class="resume-grid">
+      <!-- LEFT COLUMN: EDUCATION + PROGRAMS -->
+      <div class="resume-col">
+        <h3>Education</h3>
+        <div class="resume-item">
+          <div class="year">2019 – 2023</div>
+          <div class="desc">
+            <strong>Irkutsk</strong>
+            Irkutsk College of Architecture and Construction<br>
+            Major: Architecture<br>
+            Major: Interior Design (years 1–4)
+          </div>
+        </div>
+        <div class="resume-item">
+          <div class="year">2023 – 2023</div>
+          <div class="desc">
+            <strong>Irkutsk</strong>
+            Synergy University<br>
+            Field: 3D Visualization (year 1)
+          </div>
+        </div>
+
+        <h3 style="margin-top: 48px;">Software</h3>
+        <div class="programs-list">
+          <div class="program-item">
+            <span class="p-name">AutoCAD</span>
+            <span class="p-dots">
+              <span class="filled"></span><span class="filled"></span><span class="filled"></span><span></span><span></span>
+            </span>
+          </div>
+          <div class="program-item">
+            <span class="p-name">ArchiCAD</span>
+            <span class="p-dots">
+              <span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span>
+            </span>
+          </div>
+          <div class="program-item">
+            <span class="p-name">SketchUP</span>
+            <span class="p-dots">
+              <span class="filled"></span><span class="filled"></span><span></span><span></span><span></span>
+            </span>
+          </div>
+          <div class="program-item">
+            <span class="p-name">3Ds Max</span>
+            <span class="p-dots">
+              <span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span>
+            </span>
+          </div>
+          <div class="program-item">
+            <span class="p-name">Adobe Photoshop</span>
+            <span class="p-dots">
+              <span class="filled"></span><span class="filled"></span><span class="filled"></span><span></span><span></span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: WORK EXPERIENCE -->
+      <div class="resume-col">
+        <h3>Work Experience</h3>
+        <div class="resume-item">
+          <div class="year">2022 – 2023</div>
+          <div class="desc">
+            <strong>Irkutsk</strong>
+            Freelance<br>
+            Field: development of architectural drawings for individual residential houses
+          </div>
+        </div>
+        <div class="resume-item">
+          <div class="year">2023 – 2024</div>
+          <div class="desc">
+            <strong>Irkutsk</strong>
+            Construction company for repair and interior finishing<br>
+            Position: designer-engineer
+          </div>
+        </div>
+        <div class="resume-item">
+          <div class="year">since 2024</div>
+          <div class="desc">
+            <strong>Irkutsk</strong>
+            Freelance<br>
+            Position: designer, 3D visualizer, interior designer
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOWCASE -->
+<section class="showcase">
+  <div class="showcase-visual">
+    <img src="img/image.jpg" alt="The Colosseum in Rome">
+    <div class="showcase-caption">The Colosseum in Rome</div>
+  </div>
+  <div class="showcase-text">
+    <span class="roman-bg">IV</span>
+    <blockquote>I love antiquity, proportions, logic, and creating interiors with <em>utility, aesthetics, and thoughtfulness</em>.</blockquote>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <span class="roman-bg" style="top:40px; right:3vw; font-size:18rem;">II</span>
+  <div class="section-head reveal">
+    <span class="section-num">— II —</span>
+    <h2>Selected <em>Projects</em></h2>
+  </div>
+
+  <div class="portfolio-grid reveal">
+
+    <!-- PROJECT I -->
+    <div class="work">
+      <img src="img/4.png" alt="Natural Materials — Interior Design Project">
+      <div class="overlay">
+        <span class="tag">Residential Interior</span>
+        <h3>Natural Materials</h3>
+        <span class="area">Moscow · 2024</span>
+        <p class="desc">A calm, tactile apartment built around stone, wood and linen. The palette stays warm and earthy, letting the texture of each surface speak for itself.</p>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <!-- PROJECT II -->
+    <div class="work">
+      <img src="img/7.png" alt="Reasonable Minimalism — Interior Design Project">
+      <div class="overlay">
+        <span class="tag">Apartment</span>
+        <h3>Reasonable Minimalism</h3>
+        <span class="area">Irkutsk · 2024</span>
+        <p class="desc">Less, but better. Clean lines, hidden storage and a restrained gold accent keep the space uncluttered while still feeling rich and intentional.</p>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <!-- PROJECT III -->
+    <div class="work">
+      <img src="img/9.png" alt="Contrasts and Textures — Private House Project">
+      <div class="overlay">
+        <span class="tag">Private House</span>
+        <h3>Contrasts and Textures</h3>
+        <span class="area">Irkutsk · 2023</span>
+        <p class="desc">Dark plaster meets pale oak and brushed brass. A dramatic, sculptural living room designed for evening light and quiet conversation.</p>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <!-- PROJECT IV -->
+    <div class="work">
+      <img src="img/11.png" alt="Architecture and Interior — Interior Design Project">
+      <div class="overlay">
+        <span class="tag">Interior Concept</span>
+        <h3>Architecture and Interior</h3>
+        <span class="area">Moscow · 2023</span>
+        <p class="desc">Where the building ends and the interior begins. Structural columns and arches are treated as decorative elements rather than hidden.</p>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <!-- PROJECT V -->
+    <div class="work">
+      <img src="img/13.png" alt="Geometry and Order — Interior Design Project">
+      <div class="overlay">
+        <span class="tag">Apartment</span>
+        <h3>Geometry and Order</h3>
+        <span class="area">Irkutsk · 2022</span>
+        <p class="desc">A strict grid of panels, lighting and furniture brings a sense of calm and precision to every room, echoing classical proportion.</p>
+        <div class="line"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <span class="roman-bg" style="top:30px; left:5vw; font-size:16rem;">VI</span>
+  <div class="section-head reveal">
+    <span class="section-num">— III —</span>
+    <h2>Let's Start <em>Your</em> Project</h2>
+    <p>Write to me in any convenient way — and we will discuss the concept of your future interior.</p>
+  </div>
+
+  <div class="contact-grid reveal">
+
+    <!-- Email -->
+    <a href="mailto:kopyloff.danil2017@yandex.ru" class="contact-card">
+      <span class="ic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+          <rect x="2" y="4" width="20" height="16" rx="1"/>
+          <path d="m2 6 10 7 10-7"/>
+        </svg>
+      </span>
+      <span class="cc-label">E-mail</span>
+      <span class="cc-value">kopyloff.danil2017@yandex.ru</span>
+    </a>
+
+    <!-- Phone -->
+    <a href="tel:+79149151639" class="contact-card">
+      <span class="ic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+      </span>
+      <span class="cc-label">Phone</span>
+      <span class="cc-value">+7 (914) 915-16-39</span>
+    </a>
+
+    <!-- Telegram -->
+    <a href="https://t.me/DK_arch_design" target="_blank" rel="noopener" class="contact-card">
+      <span class="ic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M21.5 3.5 2.5 10.5l6 2 2 6 4.5-5 6-9z"/>
+          <path d="m8.5 12.5 3.5 4"/>
+        </svg>
+      </span>
+      <span class="cc-label">Telegram</span>
+      <span class="cc-value">@DK_arch_design</span>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://instagram.com/danil_kopylov_arch_design" target="_blank" rel="noopener" class="contact-card">
+      <span class="ic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+          <rect x="3" y="3" width="18" height="18" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+      </span>
+      <span class="cc-label">Instagram</span>
+      <span class="cc-value">@danil_kopylov_arch_design</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="roman-bg">VII</span>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>DK</h4>
+      <p>Interior design in antique classics with a modern character.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Author</h4>
+      <p class="footer-author">Danil <span>Kopylov</span></p>
+      <p>Interior Designer</p>
+      <p>In interior design since 2022</p>
+      <p>kopyloff.danil2017@yandex.ru</p>
+    </div>
+    <div class="footer-col">
+      <h4>Contacts</h4>
+      <a href="tel:+79149151639">+7 (914) 915-16-39</a>
+      <a href="mailto:kopyloff.danil2017@yandex.ru">kopyloff.danil2017@yandex.ru</a>
+      <a href="https://t.me/DK_arch_design" target="_blank" rel="noopener">Telegram · @DK_arch_design</a>
+      <a href="https://instagram.com/danil_kopylov_arch_design" target="_blank" rel="noopener">Instagram · @danil_kopylov_arch_design</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <small>© 2024 DK Interior Design · Danil Kopylov. All rights reserved.</small>
+    <button class="offer-btn" id="offerBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <path d="M14 2v6h6M9 13h6M9 17h6"/>
+      </svg>
+      Public Offer
+    </button>
+  </div>
+</footer>
+
+<!-- MODAL: PUBLIC OFFER -->
+<div class="modal-overlay" id="offerModal">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">×</button>
+    <h2>Public Offer</h2>
+    <span class="modal-sub">On concluding a purchase and sale agreement · DK Interior Design</span>
+
+    <h3>1. General Provisions</h3>
+    <p>This Public Offer contains the terms of concluding a Purchase and Sale Agreement (hereinafter referred to as the "Purchase and Sale Agreement" and/or "Agreement"). An offer is a proposal addressed to one or several specific persons, which is sufficiently definite and expresses the intention of the person making the proposal to consider themselves bound by the Agreement with the addressee who accepts the proposal.</p>
+    <p>The performance of the actions specified in this Offer constitutes confirmation of the consent of both Parties to conclude a Purchase and Sale Agreement on the terms, in the manner and to the extent set out in this Offer.</p>
+    <p>The text of the Public Offer below is an official public proposal of the Seller addressed to an interested circle of persons to conclude a Purchase and Sale Agreement in accordance with the provisions of paragraph 2 of Article 437 of the Civil Code of the Russian Federation.</p>
+    <p>The Purchase and Sale Agreement is considered concluded and becomes effective from the moment the Parties perform the actions provided for in this Offer and signifying unconditional and full acceptance of all terms of this Offer without any exceptions or limitations on the terms of adhesion.</p>
+
+    <h3>2. Terms and Definitions</h3>
+    <ul>
+      <li><strong>Agreement</strong> — the text of this Offer with Appendices, which are an integral part of this Offer, accepted by the Buyer by performing the conclusive actions provided for in this Offer.</li>
+      <li><strong>Conclusive actions</strong> — behavior that expresses consent to the counterparty's proposal to conclude, amend or terminate a contract. The actions consist in full or partial performance of the conditions proposed by the counterparty.</li>
+      <li><strong>Seller's website on the Internet</strong> — a set of computer programs and other information contained in an information system, access to which is provided via the Internet by domain name and network address: kopyloff.danil2017@yandex.ru</li>
+      <li><strong>Parties to the Agreement (Parties)</strong> — the Seller and the Buyer.</li>
+      <li><strong>Goods</strong> — the goods under a purchase and sale agreement may be any things in compliance with the rules provided for in Article 129 of the Civil Code of the Russian Federation.</li>
+    </ul>
+
+    <h3>3. Subject of the Agreement</h3>
+    <p>Under this Agreement, the Seller undertakes to transfer an item (Goods) into the ownership of the Buyer, and the Buyer undertakes to accept the Goods and pay a certain sum of money for it.</p>
+    <p>The name, quantity, and assortment of the Goods, its cost, delivery procedure and other conditions are determined based on the Seller's information when the Buyer places an order, or are established on the Seller's website on the Internet.</p>
+    <p>Acceptance of this Offer is expressed by performing conclusive actions, in particular:</p>
+    <ul>
+      <li>actions related to registering an account on the Seller's website on the Internet, if account registration is necessary;</li>
+      <li>by drawing up and filling out an application for ordering the Goods;</li>
+      <li>by communicating the information required for concluding the Agreement by telephone, email specified on the Seller's website on the Internet, including during a return call by the Seller following the Buyer's request;</li>
+      <li>payment for the Goods by the Buyer.</li>
+    </ul>
+    <p>This list is not exhaustive; there may be other actions that clearly express the person's intention to accept the counterparty's proposal.</p>
+
+    <h3>4. Rights and Obligations of the Parties</h3>
+    <p><strong>Rights and obligations of the Seller:</strong></p>
+    <ul>
+      <li>The Seller has the right to demand payment for the Goods and their delivery in the manner and on the terms provided for in the Agreement;</li>
+      <li>To refuse to conclude an Agreement based on this Offer with a Buyer in the event of their unfair behavior, in particular in the event of:
+        <ul>
+          <li>more than 2 (two) refusals of Goods of proper quality during the year;</li>
+          <li>provision of deliberately false personal information;</li>
+          <li>return of Goods damaged by the Buyer or Goods that have been used;</li>
+          <li>other cases of unfair behavior indicating that the Buyer concluded the Agreement for the purpose of abusing rights and without the usual economic purpose of the Agreement — acquisition of the Goods.</li>
+        </ul>
+      </li>
+      <li>The Seller undertakes to transfer to the Buyer Goods of proper quality and in proper packaging;</li>
+      <li>To transfer the Goods free from the rights of third parties;</li>
+      <li>To organize delivery of the Goods to the Buyer;</li>
+      <li>To provide the Buyer with all necessary information in accordance with the requirements of the current legislation of the Russian Federation and this Offer.</li>
+    </ul>
+    <p><strong>Rights and obligations of the Buyer:</strong></p>
+    <ul>
+      <li>The Buyer has the right to demand transfer of the Goods in the manner and on the terms provided for in the Agreement;</li>
+      <li>To demand provision of all necessary information in accordance with the requirements of the current legislation of the Russian Federation and this Offer;</li>
+      <li>To refuse the Goods on the grounds provided for in the Agreement and the current legislation of the Russian Federation;</li>
+      <li>The Buyer undertakes to provide the Seller with reliable information necessary for proper performance of the Agreement;</li>
+      <li>To accept and pay for the Goods in accordance with the terms of the Agreement;</li>
+      <li>The Buyer guarantees that all terms of the Agreement are clear to them; the Buyer accepts the terms without reservations and in full.</li>
+    </ul>
+
+    <h3>5. Price and Payment Procedure</h3>
+    <p>The cost and payment procedure for the Goods are determined based on the Seller's information when the Buyer places an order.</p>
+    <p>All settlements under the Agreement are made by bank transfer.</p>
+
+    <h3>6. Exchange and Return of Goods</h3>
+    <p>6.1. The Buyer has the right to return (exchange) to the Seller Goods purchased remotely, except for the list of goods not subject to exchange and return in accordance with the current legislation of the Russian Federation. The conditions, terms and procedure for returning Goods of proper and improper quality are established in accordance with the requirements of the Civil Code of the Russian Federation, the Law of the Russian Federation of 07.02.1992 No. 2300-1 "On Protection of Consumer Rights"; the Rules approved by the Decree of the Government of the Russian Federation of 31.12.2020 No. 2463.</p>
+    <p>6.2. The Buyer's demand for exchange or return of the Goods is subject to satisfaction if the Goods have not been used, their consumer properties are preserved and there is evidence of their purchase from the Seller.</p>
+
+    <h3>7. Confidentiality and Security</h3>
+    <p>When implementing this Agreement, the Parties ensure confidentiality and security of personal data in accordance with the current version of Federal Law No. 152-FZ of 27.07.2006 "On Personal Data" and Federal Law No. 149-FZ of 27.07.2006 "On Information, Information Technologies and Information Protection".</p>
+    <p>The Parties undertake to maintain confidentiality of information received during the performance of this Agreement and to take all possible measures to protect the received information from disclosure.</p>
+    <p>Confidential information means any information transmitted by the Seller and the Buyer in the process of implementing the Agreement and subject to protection, with exceptions listed below.</p>
+    <p>Such information may be contained in local regulations, contracts, letters, reports, analytical materials, research results, schemes, schedules, specifications and other documents provided by the Seller, drawn up both on paper and electronic media.</p>
+
+    <h3>8. Force Majeure</h3>
+    <p>The Parties are released from liability for non-performance or improper performance of obligations under the Agreement if proper performance proved impossible due to force majeure, that is, extraordinary and unavoidable circumstances under the given conditions, which include: prohibitive actions of authorities, epidemics, blockade, embargo, earthquakes, floods, fires or other natural disasters.</p>
+    <p>In the event of such circumstances, the Party is obliged to notify the other Party within 30 (thirty) business days.</p>
+    <p>A document issued by an authorized state body is sufficient confirmation of the existence and duration of force majeure.</p>
+    <p>If force majeure circumstances continue for more than 60 (sixty) business days, each Party has the right to terminate this Agreement unilaterally.</p>
+
+    <h3>9. Liability of the Parties</h3>
+    <p>In case of non-performance and/or improper performance of their obligations under the Agreement, the Parties are liable in accordance with the terms of this Offer.</p>
+    <p>The Party that failed to perform or improperly performed obligations under the Agreement is obliged to compensate the other Party for losses caused by such violations.</p>
+
+    <h3>10. Validity of this Offer</h3>
+    <p>The Offer comes into force from the moment it is posted on the Seller's website and is valid until the Seller withdraws it.</p>
+    <p>The Seller reserves the right to amend the terms of the Offer and/or withdraw the Offer at any time at their discretion. Information about the amendment or withdrawal of the Offer is brought to the Buyer's attention at the Seller's choice by posting on the Seller's website on the Internet, in the Buyer's Personal Account, or by sending a corresponding notice to the email or postal address specified by the Buyer when concluding the Agreement or during its performance.</p>
+    <p>The Agreement comes into force from the moment of Acceptance of the terms of this Offer by the Buyer and is valid until the Parties fully perform their obligations under the Agreement.</p>
+    <p>Amendments made by the Seller to the Agreement and published on the website in the form of an updated Offer are considered accepted by the Buyer in full.</p>
+
+    <h3>11. Additional Conditions</h3>
+    <p>The Agreement, its conclusion and performance are governed by the current legislation of the Russian Federation. All issues not regulated by this Offer or regulated incompletely are governed in accordance with the substantive law of the Russian Federation.</p>
+    <p>In the event of a dispute that may arise between the Parties during the performance of their obligations under the Agreement concluded on the terms of this Offer, the Parties are obliged to resolve the dispute amicably before the start of judicial proceedings.</p>
+    <p>Judicial proceedings are carried out in accordance with the legislation of the Russian Federation.</p>
+    <p>Disputes or disagreements on which the Parties have not reached agreement are subject to resolution in accordance with the legislation of the Russian Federation. The pre-trial procedure for dispute resolution is mandatory.</p>
+    <p>The Parties have designated Russian as the language of the Agreement concluded on the terms of this Offer, as well as the language used in any interaction of the Parties (including correspondence, provision of requirements / notifications / explanations, provision of documents, etc.).</p>
+    <p>All documents to be provided in accordance with the terms of this Offer must be drawn up in Russian or have a translation into Russian certified in the prescribed manner.</p>
+    <p>The inaction of one of the Parties in the event of a violation of the terms of this Offer does not deprive the interested Party of the right to protect their interests later, nor does it mean a waiver of their rights in the event of similar or similar violations by one of the Parties in the future.</p>
+    <p>If the Seller's website on the Internet contains links to other websites and materials of third parties, such links are placed solely for information purposes, and the Seller has no control over the content of such sites or materials. The Seller is not responsible for any losses or damage that may arise as a result of using such links.</p>
+
+    <h3>12. Seller's Details</h3>
+    <div class="requisites">
+      <p>Full name: Kopylov Danil Dmitrievich</p>
+      <p>INN: 380122095224</p>
+      <p>OGRN/OGRNIP: —</p>
+      <p>Contact phone: +7 914 915-16-39</p>
+      <p>Contact e-mail: kopyloff.danil2017@yandex.ru</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('menu');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('active');
+    menu.classList.toggle('open');
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    burger.classList.remove('active');
+    menu.classList.remove('open');
+  }));
+
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: .12 });
+  reveals.forEach(r => io.observe(r));
+
+  const modal = document.getElementById('offerModal');
+  const openBtn = document.getElementById('offerBtn');
+  const closeBtn = document.getElementById('modalClose');
+  openBtn.addEventListener('click', () => modal.classList.add('open'));
+  closeBtn.addEventListener('click', () => modal.classList.remove('open'));
+  modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') modal.classList.remove('open'); });
+</script>
+
+</body>
+</html>
